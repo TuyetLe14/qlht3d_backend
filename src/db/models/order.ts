@@ -1,12 +1,12 @@
 import {Model, DataTypes} from 'sequelize';
 import sequelize from '.';
+import Tickets from './ticket';
 import Users from './user';
-import Heritages from './heritage';
 
 class Orders extends Model{
 	public id!: number;
-	public userId!: number;
-	public heritageId!: number;
+	public ticketId!: number;
+	public userId!:number;
 	public orderDate!: Date;
 	public status !: number;
 	public ticketType!: string;
@@ -21,10 +21,10 @@ Orders.init(
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		userId:{
+		ticketId:{
 			type: DataTypes.INTEGER,
 		},
-		heritageId:{
+		userId:{
 			type: DataTypes.INTEGER,
 		},
 		orderDate:{
@@ -45,7 +45,7 @@ Orders.init(
 	},{sequelize,tableName:"Orders"}
 )
 
-Orders.belongsTo(Users,{targetKey:"id",foreignKey:"userId"});
-Orders.belongsTo(Heritages,{targetKey:"id",foreignKey:"heritageId"});
+Orders.belongsTo(Users,{targetKey:"id", foreignKey:"userId"});
+Orders.belongsTo(Tickets,{targetKey:"id",foreignKey:"ticketId"});
 
 export default Orders;

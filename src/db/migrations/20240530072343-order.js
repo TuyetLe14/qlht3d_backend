@@ -3,19 +3,19 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('DetailPayments', {
+    await queryInterface.createTable('Orders', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: false,
       },
-      payment_id: {
+      ticketId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Payments',
-          key: 'id'
+          model: 'Tickets',
+          key: 'id',
         },
       },
       userId: {
@@ -23,28 +23,35 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'Users',
-          key: 'id'
+          key: 'id',
         },
       },
-      payment_date: {
+      orderDate: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
-      amount: {
-        type: Sequelize.FLOAT,
-        allowNull: false
+      status: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      ticketType: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       createdAt: {
         type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
         type: Sequelize.DATE,
-
+        allowNull: false,
+        defaultValue: Sequelize.fn('now'),
       }
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('DetailPayments');
+    await queryInterface.dropTable('Orders');
   }
 };

@@ -3,50 +3,40 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Orders', {
+    await queryInterface.createTable('DetailPayments', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
-      userId: {
+      payment_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Users',
-          key: 'id'
-        }
-      },
-      heritageId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Heritages',
+          model: 'Payments',
           key: 'id'
         },
       },
-      orderDate: {
+      payment_date: {
         type: Sequelize.DATE,
-      },
-      status: {
-        type: Sequelize.INTEGER,
         allowNull: false
       },
-      ticketType: {
-        type: Sequelize.STRING,
-        allowNull: true
+      amount: {
+        type: Sequelize.FLOAT,
+        allowNull: false
       },
       createdAt: {
         type: Sequelize.DATE,
       },
       updatedAt: {
         type: Sequelize.DATE,
+
       }
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Orders');
+    await queryInterface.dropTable('DetailPayments');
   }
 };
