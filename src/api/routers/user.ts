@@ -48,19 +48,6 @@ export default (app: Router): void => {
 
 	route.get("/", middlewares.isAuth, user.get);
 	route.put(
-		"/changeRole",
-		middlewares.isAuth,
-		middlewares.permission("Admin"),
-		celebrate({
-			body: Joi.object({
-				userId: Joi.number(),
-				group: Joi.string().valid("User", "Technical", "Admin"),
-			}),
-		}),
-		user.updateRole
-	);
-
-	route.put(
 		"/editAgent/:id",
 		middlewares.isAuth,
 		middlewares.permission("Admin"),

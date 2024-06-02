@@ -49,7 +49,7 @@ const getAllAgent = async () => {
 	const user = await User.findAll({
 		where: {
 		  [Op.or]: [
-			{ group: 'Technican' },
+			{ group: 'Employee' },
 			{ group: 'Admin' }
 		  ]
 		}
@@ -169,18 +169,6 @@ const updateAgent = async (userId: number, data: any) => {
 };
 
 
-
-const updateRole = async (data: any) => {
-	const { group, userId } = data;
-	const user = await User.findOne({ where: { id: userId } });
-	if (!user) {
-		throw new Error("Không tìm thấy user.");
-	}
-	await user.update({ group: group });
-	return user;
-};
-
-
 const remove = async (userId: number) => {
 	console.log(userId);
 	const userDetail = await User.findOne({ where: { id: userId } });
@@ -193,7 +181,7 @@ const remove = async (userId: number) => {
 };
 
 const listGroup = async () => {
-	const groups = ["User", "Admin", "Technical"];
+	const groups = ["User", "Admin", "Employee"];
 
 	return groups;
 };
@@ -203,7 +191,6 @@ export default {
 	get,
 	getAll,
 	update,
-	updateRole,
 	remove,
 	listGroup,
 	createAgent,

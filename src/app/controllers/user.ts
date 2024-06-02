@@ -141,7 +141,7 @@ const update = async (req: any, res: Response, next: NextFunction) => {
 
 const updateAgent = async (req: any, res: Response, next: NextFunction) => {
 	try {
-		let result = await userservice.update(req.params.id, req.body);
+		let result = await userservice.updateAgent(req.params.id, req.body);
 		if (!result)
 			return res.json({
 				code: CONST_CODE_RES.FAIL,
@@ -175,30 +175,11 @@ const remove = async (req: any, res: Response, next: NextFunction) => {
 		return next(err);
 	}
 };
-const updateRole = async (req: any, res: Response, next: NextFunction) => {
-	try {
-		let result = await userservice.updateRole(req.body);
-
-		if (!result)
-			return res.json({
-				code: CONST_CODE_RES.FAIL,
-				message: CONST_MESS_RES.FAIL,
-			});
-		return res.json({
-			code: CONST_CODE_RES.SUCCESS,
-			message: CONST_MESS_RES.SUCCESS,
-		});
-	} catch (err) {
-		err.status = err.status || 400;
-		return next(err);
-	}
-};
 
 export default {
 	get,
 	getAll,
 	update,
-	updateRole,
 	remove,
 	createAgent,
 	getAllAgent,

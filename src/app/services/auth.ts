@@ -75,7 +75,7 @@ const signIn = async (username: string, password: string) => {
 	  verifyUser,
 	  timeoutVerifyCode
 	);
-	const domain = process.env.DOMAIN || 'http://localhost:3001';
+	const domain = process.env.DOMAIN;
   
 	const subject = `Hệ thống Quản Lý xác nhận tài khoản: ${userDetail.email}`;
 	const content = `<!DOCTYPE html>
