@@ -13,6 +13,7 @@ const order_1 = __importDefault(require("./routers/order"));
 const payment_1 = __importDefault(require("./routers/payment"));
 const review_1 = __importDefault(require("./routers/review"));
 const titket_1 = __importDefault(require("./routers/titket"));
+const historicalevent_1 = __importDefault(require("./routers/historicalevent"));
 exports.default = () => {
     const app = (0, express_1.Router)();
     (0, auth_1.default)(app);
@@ -24,6 +25,7 @@ exports.default = () => {
     (0, payment_1.default)(app);
     (0, review_1.default)(app);
     (0, titket_1.default)(app);
+    (0, historicalevent_1.default)(app);
     return app;
 };
 //# sourceMappingURL=index.js.map

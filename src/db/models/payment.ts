@@ -8,8 +8,8 @@ class Payments extends Model {
 	public pMethod!: string;
 	public total!: number;
 	public status!: number;
-	public readonly createAt!: Date;
-	public readonly updateAt!: Date;
+	public readonly createdAt!: Date;
+	public readonly updatedAt!: Date;
 }
 
 Payments.init(
@@ -31,10 +31,10 @@ Payments.init(
 		status:{
 			type: DataTypes.INTEGER,
 		},
-		createAt:{
+		createdAt:{
 			type: DataTypes.DATE,
 		},
-		updateAt:{
+		updatedAt:{
 			type: DataTypes.DATE,
 		}
 	},{sequelize,tableName:"Payments"}

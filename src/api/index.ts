@@ -8,6 +8,7 @@ import order from "./routers/order";
 import payment from "./routers/payment";
 import review from "./routers/review";
 import titket from "./routers/titket";
+import historicalevent from "./routers/historicalevent";
 
 
 export default (): Router => {
@@ -21,6 +22,7 @@ export default (): Router => {
 	payment(app);
 	review(app);
 	titket(app);
+	historicalevent(app);
 	
 	return app;
 };

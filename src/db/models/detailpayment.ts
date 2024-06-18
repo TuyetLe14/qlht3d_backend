@@ -7,8 +7,8 @@ class DetailPayments extends Model{
 	public payment_id!: number;
 	public payment_date!: string;
 	public amount!: number;
-	public readonly createAt!: Date;
-	public readonly updateAt!: Date;
+	public readonly createdAt!: Date;
+	public readonly updatedAt!: Date;
 }
 
 DetailPayments.init(
@@ -27,10 +27,10 @@ DetailPayments.init(
 		amount: {
 			type: DataTypes.FLOAT,
 		},
-		createAt:{
+		createdAt:{
 			type: DataTypes.DATE,
 		},
-		updateAt:{
+		updatedAt:{
 			type: DataTypes.DATE,
 		}
 	},{sequelize, tableName:"DetailPayments"}
