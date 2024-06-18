@@ -10,6 +10,7 @@ const user_1 = __importDefault(require("../../app/controllers/user"));
 const route = (0, express_1.Router)();
 const projectNameRouter = "user";
 exports.default = (app) => {
+    app.use(`/${projectNameRouter}`, route);
     route.get("/getAllAgent", middlewares_1.default.isAuth, middlewares_1.default.permission("Admin"), user_1.default.getAllAgent);
     route.get("/getAllUser", middlewares_1.default.isAuth, middlewares_1.default.permission("Admin"), user_1.default.getAllUser);
     route.post("/addAgent", middlewares_1.default.isAuth, middlewares_1.default.permission("Admin"), (0, celebrate_1.celebrate)({

@@ -7,8 +7,7 @@ const route = Router();
 const projectNameRouter = "user";
 
 export default (app: Router): void => {
-
-
+	app.use(`/${projectNameRouter}`, route);
 	route.get(
 		"/getAllAgent",
 		middlewares.isAuth,
