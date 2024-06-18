@@ -36,10 +36,10 @@ Orders.init(
 		ticketType:{
 			type: DataTypes.STRING,
 		},
-		createAt:{
+		createdAt:{
 			type: DataTypes.DATE,
 		},
-		updateAt:{
+		updatedAt:{
 			type: DataTypes.DATE,
 		}
 	},{sequelize,tableName:"Orders"}

@@ -8,8 +8,8 @@ class HistoricalEvents extends Model{
 	public eventName!: string;
 	public eventDate!: Date;
 	public description!: string | null;
-	public readonly createAt!: Date;
-	public readonly updateAt!: Date;
+	public readonly createdAt!: Date;
+	public readonly updatedAt!: Date;
 }
 
 HistoricalEvents.init({
@@ -30,10 +30,10 @@ HistoricalEvents.init({
 	description:{
 		type: DataTypes.STRING,
 	},
-	createAt:{
+	createdAt:{
 		type: DataTypes.DATE,
 	},
-	updateAt:{
+	updatedAt:{
 		type: DataTypes.DATE,
 	}
 },{sequelize,tableName:"HistoricalEvents"}

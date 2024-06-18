@@ -3,7 +3,7 @@ import { Op, where } from "sequelize";
 import moment from "moment";
 import { User, VerifyCode } from "../../db";
 import middlewares from "../../api/middlewares";
-import sendEmail from "../../extensions/emails";
+import sendEmail from "../../extensions/emails/index";
 import cronJob from "../../extensions/schedules";
 
 const signIn = async (username: string, password: string) => {
@@ -93,7 +93,7 @@ const signIn = async (username: string, password: string) => {
 		<body>
 		<div>
 		  <div> <p>Vui lòng click vào </p></div>
-		  <div> <a href="${domain}/iot/confirmAccount?email=${email}&code=${verifyUser.code}">link</a> </div>
+		  <div> <a href="${domain}/heritages/confirmAccount?email=${email}&code=${verifyUser.code}">link</a> </div>
 		  <div> <p> để xác thực tài khoản.</p> </div>
 		  </div>
 		</body>
@@ -125,7 +125,7 @@ const signIn = async (username: string, password: string) => {
 		message: `<div>
 		  <h3> Confirmation has expired!!</h3>
 		  <div> <p>Please click to 
-		   <a href="${process.env.DOMAIN}/iot/newConfirmAccount?email=${email}">link</a> 
+		   <a href="${process.env.DOMAIN}/heritages/newConfirmAccount?email=${email}">link</a> 
 			to create create a new confirmation email.</p> </div>
 		  </div>
 		</body>`,
@@ -316,7 +316,7 @@ const signIn = async (username: string, password: string) => {
 	  timeoutVerifyCode
 	);
 
-	const domain = process.env.DOMAIN || 'http://localhost:3000';
+	const domain = process.env.DOMAIN || 'http://localhost:3005';
   
 	const subject = `Manage System 3D the account: ${userDetail.email}`;
 	const content = `<!DOCTYPE html>
@@ -334,7 +334,7 @@ const signIn = async (username: string, password: string) => {
 		  <body>
 		  <div>
 			<div> <p>Please click to &nbsp;</p></div>
-			<div> <a href="${domain}/iot/confirmAccount?email=${userDetail.email}&code=${verifyUser.code}">link</a> </div>
+			<div> <a href="${domain}/heritages/confirmAccount?email=${userDetail.email}&code=${verifyUser.code}">link</a> </div>
 			<div> <p>&nbsp;  to confirm your account.</p> </div>
 			</div>
 		  </body>

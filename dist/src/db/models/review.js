@@ -30,10 +30,10 @@ Reviews.init({
     content: {
         type: sequelize_1.DataTypes.STRING,
     },
-    creatAt: {
+    createdAt: {
         type: sequelize_1.DataTypes.DATE,
     },
-    updateAt: {
+    updatedAt: {
         type: sequelize_1.DataTypes.DATE,
     },
 }, { sequelize: _1.default, tableName: "Reviews" });

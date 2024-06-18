@@ -35,7 +35,7 @@ Tickets.init(
 		timeEnd: {
 			type: DataTypes.DATE,
 		},
-		createAt: {
+		createdAt: {
 			type: DataTypes.DATE,
 		},
 		updatedAt: {

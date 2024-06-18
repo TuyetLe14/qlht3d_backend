@@ -13,14 +13,14 @@ exports.default = (app) => {
     route.post("/", middlewares_1.default.isAuth, middlewares_1.default.permission("Admin"), (0, celebrate_1.celebrate)({
         body: celebrate_1.Joi.object({
             ticketId: celebrate_1.Joi.number().required(),
-            userId: celebrate_1.Joi.string().required(),
+            userId: celebrate_1.Joi.number().required(),
             ticketType: celebrate_1.Joi.string().required(),
         }),
     }), order_1.default.create);
     route.put("/:id", middlewares_1.default.isAuth, middlewares_1.default.permission("Admin"), (0, celebrate_1.celebrate)({
         body: celebrate_1.Joi.object({
             ticketId: celebrate_1.Joi.number().required(),
-            userId: celebrate_1.Joi.string().required(),
+            userId: celebrate_1.Joi.number().required(),
             ticketType: celebrate_1.Joi.string().required(),
             status: celebrate_1.Joi.number().required()
         }),

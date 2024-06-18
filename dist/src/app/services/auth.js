@@ -8,7 +8,7 @@ const sequelize_1 = require("sequelize");
 const moment_1 = __importDefault(require("moment"));
 const db_1 = require("../../db");
 const middlewares_1 = __importDefault(require("../../api/middlewares"));
-const emails_1 = __importDefault(require("../../extensions/emails"));
+const index_1 = __importDefault(require("../../extensions/emails/index"));
 const schedules_1 = __importDefault(require("../../extensions/schedules"));
 const signIn = async (username, password) => {
     const userDetail = await db_1.User.findOne({
@@ -75,12 +75,12 @@ const signUp = async (data) => {
 		<body>
 		<div>
 		  <div> <p>Vui lòng click vào </p></div>
-		  <div> <a href="${domain}/iot/confirmAccount?email=${email}&code=${verifyUser.code}">link</a> </div>
+		  <div> <a href="${domain}/heritages/confirmAccount?email=${email}&code=${verifyUser.code}">link</a> </div>
 		  <div> <p> để xác thực tài khoản.</p> </div>
 		  </div>
 		</body>
 	</html>`;
-    await (0, emails_1.default)(userDetail.email, subject, content);
+    await (0, index_1.default)(userDetail.email, subject, content);
     return { id: userDetail.id, email, phoneNumber: phoneNumber || "" };
 };
 const timeoutVerifyCode = async (data) => {
@@ -102,7 +102,7 @@ const confirmAccount = async (email, code) => {
             message: `<div>
 		  <h3> Confirmation has expired!!</h3>
 		  <div> <p>Please click to 
-		   <a href="${process.env.DOMAIN}/iot/newConfirmAccount?email=${email}">link</a> 
+		   <a href="${process.env.DOMAIN}/heritages/newConfirmAccount?email=${email}">link</a> 
 			to create create a new confirmation email.</p> </div>
 		  </div>
 		</body>`,
@@ -174,7 +174,7 @@ const forgotPassword = async (username) => {
 		  </div>
 		</body>
 	</html>`;
-    return await (0, emails_1.default)(username, subject, content);
+    return await (0, index_1.default)(username, subject, content);
 };
 const confirmForgotPassword = async (data) => {
     const verifyUser = await db_1.VerifyCode.findOne({
@@ -225,7 +225,7 @@ const resetPassword = async (username, password) => {
 		  </div>
 		</body>
 	</html>`;
-    await (0, emails_1.default)(userDetail.email, subject, text);
+    await (0, index_1.default)(userDetail.email, subject, text);
     return ret;
 };
 const newConfirmAccount = async (email) => {
@@ -243,7 +243,7 @@ const newConfirmAccount = async (email) => {
     const timeout = moment_1.default.utc(time);
     const expression = `${timeout.format("s")} ${timeout.format("m")} ${timeout.format("H")} ${timeout.format("D")} ${timeout.format("M")} * ${timeout.format("YYYY")}`;
     await schedules_1.default.add(`signUp/${email}`, expression, true, verifyUser, timeoutVerifyCode);
-    const domain = process.env.DOMAIN || 'http://localhost:3000';
+    const domain = process.env.DOMAIN || 'http://localhost:3005';
     const subject = `Manage System 3D the account: ${userDetail.email}`;
     const content = `<!DOCTYPE html>
 	  <html>
@@ -260,12 +260,12 @@ const newConfirmAccount = async (email) => {
 		  <body>
 		  <div>
 			<div> <p>Please click to &nbsp;</p></div>
-			<div> <a href="${domain}/iot/confirmAccount?email=${userDetail.email}&code=${verifyUser.code}">link</a> </div>
+			<div> <a href="${domain}/heritages/confirmAccount?email=${userDetail.email}&code=${verifyUser.code}">link</a> </div>
 			<div> <p>&nbsp;  to confirm your account.</p> </div>
 			</div>
 		  </body>
 	  </html>`;
-    await (0, emails_1.default)(userDetail.email, subject, content);
+    await (0, index_1.default)(userDetail.email, subject, content);
     return {
         message: `<h3>The new verification has been sent to ${email}! Please check your inbox!</h3>`,
     };

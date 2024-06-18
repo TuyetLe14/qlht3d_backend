@@ -29,13 +29,13 @@ Conservations.init({
     cost: {
         type: sequelize_1.DataTypes.FLOAT,
     },
-    createAt: {
+    createdAt: {
         type: sequelize_1.DataTypes.DATE,
     },
-    updateAt: {
+    updatedAt: {
         type: sequelize_1.DataTypes.DATE,
     },
-}, { sequelize: _1.default, tableName: "Conservation" });
+}, { sequelize: _1.default, tableName: "Conservations" });
 Conservations.belongsTo(heritage_1.default, { targetKey: "id", foreignKey: "heritageId" });
 exports.default = Conservations;
 //# sourceMappingURL=conservation.js.map

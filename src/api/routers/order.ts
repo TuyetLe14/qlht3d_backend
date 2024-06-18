@@ -14,7 +14,7 @@ export default (app: Router): void => {
 		celebrate({
 			body: Joi.object({
 				ticketId: Joi.number().required(),
-				userId: Joi.string().required(),
+				userId: Joi.number().required(),
 				ticketType: Joi.string().required(),
 			}),
 		}),
@@ -28,7 +28,7 @@ export default (app: Router): void => {
 		celebrate({
 			body: Joi.object({
 				ticketId: Joi.number().required(),
-				userId: Joi.string().required(),
+				userId: Joi.number().required(),
 				ticketType: Joi.string().required(),
 				status:Joi.number().required()
 			}),

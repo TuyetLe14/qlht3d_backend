@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const sendEmail = async (email, subject, html) => {
     const transporter = nodemailer_1.default.createTransport({
-        host: process.env.HOT_EMAIL,
-        service: process.env.SERVICE_EMAIL,
         secure: true,
         port: 465,
         auth: {

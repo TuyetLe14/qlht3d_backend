@@ -29,7 +29,7 @@ Tickets.init({
     timeEnd: {
         type: sequelize_1.DataTypes.DATE,
     },
-    createAt: {
+    createdAt: {
         type: sequelize_1.DataTypes.DATE,
     },
     updatedAt: {

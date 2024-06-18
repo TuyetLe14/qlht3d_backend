@@ -35,13 +35,13 @@ Conservations.init(
 		cost: {
 			type: DataTypes.FLOAT,
 		},
-		createAt:{
+		createdAt:{
 			type: DataTypes.DATE,
 		},
-		updateAt:{
+		updatedAt:{
 			type: DataTypes.DATE,
 		},
-	},{sequelize,tableName:"Conservation"}
+	},{sequelize,tableName:"Conservations"}
 )
 
 Conservations.belongsTo(Heritages,{targetKey:"id", foreignKey:"heritageId"})
